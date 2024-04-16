@@ -6,7 +6,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="alert alert-success mb-2"
-                >Perfil Salvo.</p>
+                >Perfil Atualizado com sucesso.</p>
     @endif
     <header>
         <h2 class="">
@@ -55,7 +55,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
 
             
         </div>
