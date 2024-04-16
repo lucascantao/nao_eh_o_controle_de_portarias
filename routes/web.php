@@ -1,19 +1,38 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SetorController;
 use App\Http\Controllers\AssuntoController;
 use App\Http\Controllers\PortariaController;
 
-Route::get('/', [PortariaController::class, 'search'])->name('portaria.search');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+Route::get('/', [PortariaController::class, 'search'])->middleware(['auth', 'verified'])->name('portaria.search');
 
 // Setores
-Route::get('/setor', [SetorController::class, 'index'])->name('setor.index');
-Route::get('/setor/create', [SetorController::class, 'create'])->name('setor.create');
-Route::post('/setor', [SetorController::class, 'store'])->name('setor.store');
-Route::get('/setor/{setor}/edit', [SetorController::class, 'edit'])->name('setor.edit');
-Route::put('/setor/{setor}/update', [SetorController::class, 'update'])->name('setor.update');
-Route::delete('/setor/{setor}/destroy', [SetorController::class, 'destroy'])->name('setor.destroy');
+Route::prefix('setor')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [SetorController::class, 'index'])->name('setor.index');
+    Route::get('/create', [SetorController::class, 'create'])->name('setor.create');
+    Route::post('/', [SetorController::class, 'store'])->name('setor.store');
+    Route::get('/{setor}/edit', [SetorController::class, 'edit'])->name('setor.edit');
+    Route::put('/{setor}/update', [SetorController::class, 'update'])->name('setor.update');
+    Route::delete('/{setor}/destroy', [SetorController::class, 'destroy'])->name('setor.destroy');
+});
 
 //Assuntos
 Route::get('/assunto', [AssuntoController::class, 'index'])->name('assunto.index');
