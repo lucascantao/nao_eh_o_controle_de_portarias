@@ -25,11 +25,14 @@ Route::prefix('setor')->middleware(['auth', 'verified'])->group(function () {
 });
 
 //Assuntos
-Route::get('/assunto', [AssuntoController::class, 'index'])->name('assunto.index');
-Route::get('/assunto/create', [AssuntoController::class, 'create'])->name('assunto.create');
-Route::post('/assunto', [AssuntoController::class, 'store'])->name('assunto.store');
-Route::get('/assunto/{assunto}/edit', [AssuntoController::class, 'edit'])->name('assunto.edit');
-Route::put('/assunto/{assunto}/update', [AssuntoController::class, 'update'])->name('assunto.update');
-Route::get('/assunto/{assunto}/destroy', [AssuntoController::class, 'destroy'])->name('assunto.destroy');
+Route::prefix('assunto')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [AssuntoController::class, 'index'])->name('assunto.index');
+    Route::get('/create', [AssuntoController::class, 'create'])->name('assunto.create');
+    Route::post('/', [AssuntoController::class, 'store'])->name('assunto.store');
+    Route::get('/{assunto}/edit', [AssuntoController::class, 'edit'])->name('assunto.edit');
+    Route::put('/{assunto}/update', [AssuntoController::class, 'update'])->name('assunto.update');
+    Route::get('/{assunto}/destroy', [AssuntoController::class, 'destroy'])->name('assunto.destroy');
+});
+
 
 require __DIR__.'/auth.php';
