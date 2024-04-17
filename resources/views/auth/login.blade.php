@@ -24,7 +24,7 @@
 
         <!-- Remember Me -->
         <div class="block mt-4 d-flex justify-content-between">
-            <div for="remember_me" class="">
+            <div for="remember_me" class="form-check">
                 <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
                 <label class="form-check-label">Lembrar login</label>
             </div>
