@@ -33,8 +33,10 @@ return [
     ],
     'boolean' => 'The :attribute field must be true or false.',
     'can' => 'The :attribute field contains an unauthorized value.',
-    'confirmed' => 'The :attribute field confirmation does not match.',
-    'current_password' => 'The password is incorrect.',
+    // 'confirmed' => 'The :attribute field confirmation does not match.',
+    'confirmed' => 'O campo confirmação de :attribute não combina.',
+    // 'current_password' => 'The password is incorrect.',
+    'current_password' => 'A senha está incorreta.',
     'date' => 'The :attribute field must be a valid date.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
@@ -104,7 +106,8 @@ return [
         'array' => 'The :attribute field must have at least :min items.',
         'file' => 'The :attribute field must be at least :min kilobytes.',
         'numeric' => 'The :attribute field must be at least :min.',
-        'string' => 'The :attribute field must be at least :min characters.',
+        // 'string' => 'The :attribute field must be at least :min characters.',
+        'string' => 'O campo :attribute precisa ter pelo menos :min caracteres.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',
@@ -148,7 +151,8 @@ return [
         'array' => 'The :attribute field must contain :size items.',
         'file' => 'The :attribute field must be :size kilobytes.',
         'numeric' => 'The :attribute field must be :size.',
-        'string' => 'The :attribute field must be :size characters.',
+        // 'string' => 'The :attribute field must be :size characters.',
+        'string' => 'O campo :attribute precisa ter pelo menos :size caracteres.',
     ],
     'starts_with' => 'The :attribute field must start with one of the following: :values.',
     'string' => 'The :attribute field must be a string.',
@@ -188,6 +192,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password' => 'senha',
+        'current_password' => 'senha atual'
+    ],
 
 ];

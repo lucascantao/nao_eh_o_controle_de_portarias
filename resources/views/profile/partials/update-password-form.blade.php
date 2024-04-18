@@ -19,8 +19,6 @@
                 >Senha Atualizada com sucesso</p>
             @endif
 
-    <p class="text-warning">*falta traduzir os erros.</p>
-
     <form method="post" action="{{ route('password.update') }}" class="mt-6">
         @csrf
         @method('put')
