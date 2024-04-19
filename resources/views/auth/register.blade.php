@@ -22,6 +22,17 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Setor -->
+        <div class="mt-2">
+            <label class="form-label" for="Setor">Setor</label>
+            <select class="form-select" name="setor" id="setor">
+                @foreach ($setores as $setor)
+                    <option selected hidden>Selecionar Setor</option>
+                    <option name="{{$setor->sigla}}" value="{{$setor->id}}" id="">{{$setor->sigla}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Password -->
         <div class="mt-2">
             <label for="password">Senha</label>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Setor;
+use App\Models\Perfil;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,7 +21,13 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $setores = Setor::all();
+        $perfis = Perfil::all();
+
+        return view('auth.register', 
+            ['setores' => $setores],
+            ['perfis' => $perfis],
+        );
     }
 
     /**
@@ -41,7 +49,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        $perfil = Perfil::find(1);
+
+        // $user->perfil()->save($perfil);
+        $perfil->users()->save($user);
+
+        // event(new Registered($user));
 
         Auth::login($user);
 
