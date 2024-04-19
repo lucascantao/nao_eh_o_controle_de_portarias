@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perfis', function (Blueprint $table) {
-            $table->id()->unsigned();
-            $table->string('nome')->unique();
-            $table->string('descricao')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('perfil_id')->unsigned();
+            $table->foreign('perfil_id')->references('id')->on('perfis');
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Perfil extends Model
@@ -12,4 +13,11 @@ class Perfil extends Model
         'nome',
         'descricao'
     ];
+
+    protected $table = 'perfis';
+
+    public function users(): HasMany 
+    {
+        return $this->hasMany(Users::class);
+    }
 }

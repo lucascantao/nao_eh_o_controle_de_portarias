@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-    ];
+    ]; 
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,8 +46,25 @@ class User extends Authenticatable
         ];
     }
 
-    public function perfil(): HasOne 
+    /**
+     * Get the Perfil that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function perfil(): BelongsTo
     {
-        return $this->hasOne(Perfil::class);
+        return $this->belongsTo(Perfil::class, 'user_perfil');
     }
+
+    /**
+     * Get the Setor that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function setores(): BelongsTo
+    {
+        return $this->belongsTo(Setor::class, 'user_setor');
+    }
+
+    
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Setor extends Model
@@ -14,5 +15,10 @@ class Setor extends Model
         'nome',
         'sigla'
     ];
+
+    public function users(): HasMany 
+    {
+        return $this->hasMany(Users::class);
+    }
 
 }
