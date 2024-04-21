@@ -12,10 +12,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [PortariaController::class, 'search'])->middleware(['auth', 'verified'])->name('portaria.search');
+Route::get('/', [PortariaController::class, 'search'])->middleware(['auth', 'verified', 'registrado'])->name('portaria.search');
+
+Route::get('/pre-registro', function() {
+    return view('pre_registro.pre_registro');
+})->middleware(['auth', 'verified'])->name('preregistro');
 
 // Setores
-Route::prefix('setor')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('setor')->middleware(['auth', 'verified', 'registrado'])->group(function () {
     Route::get('/', [SetorController::class, 'index'])->name('setor.index');
     Route::get('/create', [SetorController::class, 'create'])->name('setor.create');
     Route::post('/', [SetorController::class, 'store'])->name('setor.store');
@@ -25,7 +29,7 @@ Route::prefix('setor')->middleware(['auth', 'verified'])->group(function () {
 });
 
 //Assuntos
-Route::prefix('assunto')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('assunto')->middleware(['auth', 'verified', 'registrado'])->group(function () {
     Route::get('/', [AssuntoController::class, 'index'])->name('assunto.index');
     Route::get('/create', [AssuntoController::class, 'create'])->name('assunto.create');
     Route::post('/', [AssuntoController::class, 'store'])->name('assunto.store');
