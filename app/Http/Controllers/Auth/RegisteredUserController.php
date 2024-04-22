@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
 
         // $user->perfil()->save($perfil);
         // $perfil->users()->save($user);
-        $setor ->users()->save($user);
+        // $setor ->users()->save($user);
 
         event(new Registered($user));
 
