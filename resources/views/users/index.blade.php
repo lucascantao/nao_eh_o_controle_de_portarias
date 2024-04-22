@@ -39,6 +39,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
+                <th scope="col">Setor</th>
                 <th scope="col">Perfil</th>
                 <th scope="col">Status</th>
                 <th scope="col" class="text-center col-2">Ação</th>
@@ -50,10 +51,12 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->perfil_id}}</td>
+                <td>{{$user->setores->sigla}}</td>
                 @if ($user->perfil_id != null)
+                <td>{{$user->perfil->nome}}</td>
                 <td class="text-success">Habilitado</td>
                 @else
+                <td>-</td>
                 <td class="text-warning">Desabilitado</td>
                 @endif
                 <td class="text-center">

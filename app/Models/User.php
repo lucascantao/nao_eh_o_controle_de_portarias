@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function perfil(): BelongsTo
     {
-        return $this->belongsTo(Perfil::class, 'user_perfil');
+        return $this->belongsTo(Perfil::class, 'perfil_id');
     }
 
     /**
@@ -65,7 +65,7 @@ class User extends Authenticatable
      */
     public function setores(): BelongsTo
     {
-        return $this->belongsTo(Setor::class, 'user_setor');
+        return $this->belongsTo(Setor::class, 'setor_id');
     }
 
     

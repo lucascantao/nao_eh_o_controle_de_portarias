@@ -35,13 +35,15 @@ class DatabaseSeeder extends Seeder
             'descricao' => 'Administrador do sistema'
         ]);
 
-        User::create([
+        $master = User::create([
             'name' => 'MASTER',
             'email' => 'MASTER@MASTER.COM',
             'password' => Hash::make('mastermaster'),
             'perfil_id' => 3,
             'setor_id' => 1
         ]);
+
+        Perfil::find(3)->users()->save($master);
 
     }
 }

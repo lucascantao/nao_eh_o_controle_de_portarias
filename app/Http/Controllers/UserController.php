@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Perfil;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
