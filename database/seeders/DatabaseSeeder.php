@@ -32,18 +32,18 @@ class DatabaseSeeder extends Seeder
         ]);
         Perfil::create([
             'nome' => 'master',
-            'descricao' => 'Administrador do sistema'
+            'descricao' => 'Mestre do sistema'
         ]);
 
         $master = User::create([
-            'name' => 'MASTER',
-            'email' => 'MASTER@MASTER.COM',
+            'name' => 'master',
+            'email' => 'master@master.com',
             'password' => Hash::make('mastermaster'),
             'perfil_id' => 3,
             'setor_id' => 1
         ]);
 
-        Perfil::find(3)->users()->save($master);
+        // Perfil::find(3)->users()->save($master);
 
     }
 }
