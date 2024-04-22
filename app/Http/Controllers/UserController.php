@@ -11,4 +11,13 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', ['users' => $users]);
     }
+
+    public function enable(User $user) {
+
+        // dd($user);
+        $user->perfil_id = 1;
+        $user->save();
+        return redirect(route('user.index'))->with('success','Usuário habilitado com sucesso!');
+
+    }
 }

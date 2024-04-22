@@ -41,6 +41,7 @@ Route::prefix('assunto')->middleware(['auth', 'verified', 'status'])->group(func
 
 Route::prefix('gerenciar-perfis')->middleware(['auth', 'verified', 'status'])->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
+    Route::get('/{user}/enable', [UserController::class, 'enable'])->name('user.enable');
 });
 
 require __DIR__.'/auth.php';

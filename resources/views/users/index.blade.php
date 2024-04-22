@@ -58,7 +58,7 @@
                 @endif
                 <td class="text-center">
                     @if ($user->perfil_id == null)
-                    <a class="btn btn-warning me-2" href="">Habilitar</a>
+                    <a class="btn btn-warning me-2" href="{{route('user.enable', ['user' => $user])}}">Habilitar</a>
                     @endif
                     {{-- <a class="btn btn-danger me-2" href=""><span><i class="bi bi-trash-fill"></i></span></a> --}}
                 </td>
