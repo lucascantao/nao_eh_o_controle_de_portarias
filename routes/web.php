@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SetorController;
 use App\Http\Controllers\AssuntoController;
 use App\Http\Controllers\PortariaController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,5 +39,8 @@ Route::prefix('assunto')->middleware(['auth', 'verified', 'status'])->group(func
     Route::get('/{assunto}/destroy', [AssuntoController::class, 'destroy'])->name('assunto.destroy');
 });
 
+Route::prefix('gerenciar-perfis')->middleware(['auth', 'verified', 'status'])->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('user.index');
+});
 
 require __DIR__.'/auth.php';

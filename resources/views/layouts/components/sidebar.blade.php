@@ -29,7 +29,7 @@
                 <span>Assuntos</span></a>
         </li>
         <li>
-            <a href="" class="nav-link text-white align-middle">
+            <a href="{{route('user.index')}}" class="nav-link text-white align-middle">
                 <i class="bi bi-people-fill"></i>
                 <span>Gerenciar Perfis</span></a>
         </li>

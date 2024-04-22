@@ -108,5 +108,31 @@
             assunto_table.column(1).search(this.value).draw();
         })
         // TABELA ASSUNTO END
+
+        // TABELA usuario
+        var usuario_table = $('#usuario_table').DataTable({
+
+        // Tradução
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/2.0.3/i18n/pt-BR.json',
+        },
+        columnDefs: [
+            {target: 0, visible: false},
+            {target: 5, orderable: false},
+        ],
+        fixedHeader: {
+            header:true,
+            footer: true,
+        },
+        // Remover controles padrão
+        layout: {
+            topEnd: null
+        }
+        });
+
+        $('#usuario_nome').on('keyup', function() {
+            usuario_table.column(1).search(this.value).draw();
+        })
+        // TABELA usuario END
     </script>
 </html>
