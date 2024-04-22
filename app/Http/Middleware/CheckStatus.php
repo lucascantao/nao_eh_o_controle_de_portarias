@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class RegistroDeUsuario
+class CheckStatus
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class RegistroDeUsuario
             return $next($request);
         }
 
-        return redirect(route('preregistro', absolute: false));
+        return redirect(route('status', absolute: false));
 
     }
 }
