@@ -16,7 +16,7 @@ Route::middleware(['auth', 'registered'])->group(function () {
 Route::get('/', [PortariaController::class, 'search'])->middleware(['auth', 'registered'])->name('portaria.search');
 
 Route::get('/status', function() {
-    return view('pre_registro.pre_registro');
+    return view('status.status');
 })->middleware(['auth',])->name('status');
 
 // Setores
