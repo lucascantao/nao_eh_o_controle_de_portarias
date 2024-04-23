@@ -7,7 +7,7 @@ use App\Http\Controllers\AssuntoController;
 use App\Http\Controllers\PortariaController;
 use App\Http\Controllers\UserController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'registered'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

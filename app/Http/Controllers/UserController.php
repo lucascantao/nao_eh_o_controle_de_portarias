@@ -6,11 +6,12 @@ use App\Models\User;
 use App\Models\Perfil;
 use App\Models\Setor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index() {
-        $users = User::all();
+        $users = User::where('perfil_id', '<=', 2 )->orWhere('perfil_id', '=', null)->get();
         return view('users.index', [
             'users' => $users,
         ]);
@@ -25,7 +26,7 @@ class UserController extends Controller
 
     public function edit(User $user) {
         $setores = Setor::all();
-        $perfis = Perfil::all();
+        $perfis = Perfil::where('id', '<=', Auth::user()->perfil_id)->get();
         return view('users.edit', [
             'user' => $user,
             'setores' => $setores,

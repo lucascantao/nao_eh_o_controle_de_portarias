@@ -40,7 +40,7 @@
                 <select id="usuario_perfil" class="form-select" name="perfil_id">
                     <option selected hidden value="null">Selecionar pefil</option>
                     @foreach ($perfis as $perfil)
-                    @if ($perfil->id == $user->perfil->id)
+                    @if ($perfil->id == $user->perfil_id)
                         <option selected name="{{$perfil->nome}}" value="{{$perfil->id}}" id="">{{$perfil->nome}}</option>
                     @else
                         <option name="{{$perfil->nome}}" value="{{$perfil->id}}" id="">{{$perfil->nome}}</option>
