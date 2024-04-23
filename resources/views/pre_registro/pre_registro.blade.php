@@ -16,6 +16,9 @@
 
 @endif
 
-<a class="btn btn-success" href="{{route('logout')}}">Sair</a>
+<div>
+    <a class="btn btn-success" href="{{route('logout')}}"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
+    <a class="btn btn-success mx-2" href="{{route('profile.edit')}}">Página de Perfil<i class="bi bi-person ms-2"></i></a>
+</div>
 
 @endsection

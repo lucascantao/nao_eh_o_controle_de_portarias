@@ -55,11 +55,7 @@ body {
     width: 100%;
     background-color: #dbe6ee;
   }
-
-  .bi {
-    fill: currentColor;
-  }
-
+  
   #button {
     background-color: #003594;
     color: white;
@@ -67,8 +63,12 @@ body {
     margin-left: .5rem;
     border:none;
   }
+
+  .bi {
+    fill: currentColor;
+  }
   
-   
+  
   .nav-link:hover {
     background-color: #e6f2ff; /* cor de fundo de hover */
   }

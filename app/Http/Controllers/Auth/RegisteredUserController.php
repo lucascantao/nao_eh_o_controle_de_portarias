@@ -40,28 +40,16 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', 'min:6'],
         ]);
-
-        // dd($request);
-
-        $perfil_id = 1;
-        // $setor_id = 1;
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'perfil_id' => $perfil_id,
+            'perfil_id' => null,
             'setor_id' => $request->setor
         ]);
-
-        $perfil = Perfil::find($perfil_id);
-        $setor = Setor::find($request->setor);
-
-        // $user->perfil()->save($perfil);
-        // $perfil->users()->save($user);
-        // $setor ->users()->save($user);
 
         event(new Registered($user));
 
